@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Jerseys | Goal 2 Goal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Internal styles for specific shop page needs if not in style.css yet */
+        .shop-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            padding: 120px 20px 60px;
+            /* Top padding for fixed header */
+        }
+
+        /* Sidebar */
+        .filters-sidebar {
+            background: var(--color-secondary-light);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            height: fit-content;
+        }
+
+        .filter-group {
+            margin-bottom: 30px;
+        }
+
+        .filter-group h4 {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
+
+        .filter-list li {
+            margin-bottom: 10px;
+        }
+
+        .filter-list label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-gray);
+        }
+
+        .filter-list input[type="checkbox"] {
+            accent-color: var(--color-primary);
+        }
+
+        /* Product Grid */
+        .shop-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--color-secondary-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-main);
+        }
+
+        .product-image {
+            height: 300px;
+            background: #e2e8f0;
+            /* Placeholder gray */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-overlay {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(15, 23, 42, 0.9);
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .product-card:hover .product-overlay {
+            bottom: 0;
+            opacity: 1;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .shop-container {
+                grid-template-columns: 1fr;
+            }
+
+            .filters-sidebar {
+                display: none;
+                /* Add toggle later */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (Same as Index) -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">GOAL<span class="highlight">2</span>GOAL</a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html" class="active">Shop Jerseys</a></li>
+                    <li><a href="customize.html">Customize</a></li>
+                    <li><a href="#offers">Offers</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="cart-wrapper">
+                    <a href="cart.html" class="icon-btn cart-btn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shop Content -->
+    <main class="shop-container container">
+
+        <!-- Sidebar -->
+        <aside class="filters-sidebar">
+            <div class="filter-group">
+                <h4>Categories</h4>
+                <ul class="filter-list">
+                    <li><label><input type="checkbox"> Premier League</label></li>
+                    <li><label><input type="checkbox"> La Liga</label></li>
+                    <li><label><input type="checkbox"> Serie A</label></li>
+                    <li><label><input type="checkbox"> International</label></li>
+                </ul>
+            </div>
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <ul class="filter-list">
+                    <li><label><input type="checkbox"> Under ₹500</label></li>
+                    <li><label><input type="checkbox"> ₹500 - ₹1000</label></li>
+                    <li><label><input type="checkbox"> Above ₹1000</label></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <section class="products-area">
+            <div class="section-header"
+                style="display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center;">
+                <h2>All Jerseys</h2>
+                <select
+                    style="background: var(--color-secondary-light); color: #fff; border: 1px solid var(--color-gray); padding: 8px; border-radius: 5px;">
+                    <option>Sort by: Newest</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                </select>
+            </div>
+
+            <div class="shop-products">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fa-solid fa-shirt" style="font-size: 4rem;"></i>
+                        <div class="product-overlay">
+                            <button class="btn btn-primary" style="padding: 8px 15px; font-size: 0.8rem;">Add to
+                                Cart</button>
+                            <a href="customize.html" class="btn btn-outline"
+                                style="padding: 8px 15px; font-size: 0.8rem;">Customize</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Manchester City Home 24/25</h3>
+                        <div class="product-price">₹899</div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fa-solid fa-shirt" style="font-size: 4rem;"></i>
+                        <div class="product-overlay">
+                            <button class="btn btn-primary" style="padding: 8px 15px; font-size: 0.8rem;">Add to
+                                Cart</button>
+                            <a href="customize.html" class="btn btn-outline"
+                                style="padding: 8px 15px; font-size: 0.8rem;">Customize</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Real Madrid Home 24/25</h3>
+                        <div class="product-price">₹999</div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fa-solid fa-shirt" style="font-size: 4rem;"></i>
+                        <div class="product-overlay">
+                            <button class="btn btn-primary" style="padding: 8px 15px; font-size: 0.8rem;">Add to
+                                Cart</button>
+                            <a href="customize.html" class="btn btn-outline"
+                                style="padding: 8px 15px; font-size: 0.8rem;">Customize</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Arsenal Away 24/25</h3>
+                        <div class="product-price">₹899</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Same as Index) -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>GOAL<span class="highlight">2</span>GOAL</h3>
+                <p>Your trusted partner for premium sports apparel.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Jerseys</a></li>
+                    <li><a href="customize.html">Custom Kits</a></li>
+                    <li><a href="#offers">Offers</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Goal 2 Goal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

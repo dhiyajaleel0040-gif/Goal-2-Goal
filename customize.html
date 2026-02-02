@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Your Jersey | Goal 2 Goal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .customizer-container {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            min-height: 90vh;
+        }
+
+        /* Preview Area */
+        .preview-area {
+            background: var(--color-secondary-light);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 500px;
+        }
+
+        .jersey-mockup {
+            width: 400px;
+            height: 500px;
+            background-color: #334155;
+            /* Fallback for image */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Overlay Text */
+        .jersey-text-overlay {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            text-align: center;
+            width: 100%;
+        }
+
+        .preview-name {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #fff;
+            display: block;
+            margin-bottom: 0px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .preview-number {
+            font-size: 8rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Controls Area */
+        .controls-area {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--color-gray);
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--color-dark);
+            border: 1px solid var(--color-secondary-light);
+            border-radius: 8px;
+            color: #fff;
+            font-family: var(--font-main);
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .color-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .color-swatch.active {
+            border-color: #fff;
+            transform: scale(1.1);
+        }
+
+        .swatch-blue {
+            background: #1e3a8a;
+        }
+
+        .swatch-red {
+            background: #991b1b;
+        }
+
+        .swatch-white {
+            background: #f8fafc;
+        }
+
+        .swatch-black {
+            background: #000;
+        }
+
+        .price-summary {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 900px) {
+            .customizer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">GOAL<span class="highlight">2</span>GOAL</a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop Jerseys</a></li>
+                    <li><a href="customize.html" class="active">Customize</a></li>
+                    <li><a href="#offers">Offers</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="cart-wrapper">
+                    <a href="cart.html" class="icon-btn cart-btn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="customizer-container container">
+
+        <!-- Jersey Preview -->
+        <div class="preview-area">
+            <div class="jersey-mockup" id="jerseyMockup">
+                <!-- Icon as placeholder for jersey image -->
+                <i class="fa-solid fa-shirt" style="font-size: 12rem;"></i>
+
+                <div class="jersey-text-overlay">
+                    <span class="preview-name" id="previewName">YOUR NAME</span>
+                    <span class="preview-number" id="previewNumber">10</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <aside class="controls-area">
+            <h2 style="margin-bottom: 20px;">Design Your Kit</h2>
+
+            <div class="control-group">
+                <label>Select Your Team / Base Color</label>
+                <div class="color-options">
+                    <div class="color-swatch swatch-blue active" onclick="changeColor('#1e3a8a')"></div>
+                    <div class="color-swatch swatch-red" onclick="changeColor('#991b1b')"></div>
+                    <div class="color-swatch swatch-white" onclick="changeColor('#f8fafc')"></div>
+                    <div class="color-swatch swatch-black" onclick="changeColor('#000')"></div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Name on Back</label>
+                <input type="text" class="form-input" id="inputName" placeholder="Enter Name (e.g. RONALDO)"
+                    maxlength="12">
+            </div>
+
+            <div class="control-group">
+                <label>Jersey Number</label>
+                <input type="number" class="form-input" id="inputNumber" placeholder="10" max="99">
+            </div>
+
+            <div class="control-group">
+                <label>Size</label>
+                <select class="form-input">
+                    <option>Small (S)</option>
+                    <option selected>Medium (M)</option>
+                    <option>Large (L)</option>
+                    <option>Extra Large (XL)</option>
+                </select>
+            </div>
+
+            <div class="price-summary">
+                <div>
+                    <span style="display: block; color: var(--color-gray); font-size: 0.9rem;">Total Cost</span>
+                    <span class="total-price">₹1,199</span>
+                </div>
+                <button class="btn btn-primary">Add to Bag</button>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>GOAL<span class="highlight">2</span>GOAL</h3>
+                <p>Your trusted partner for premium sports apparel.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Goal 2 Goal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        // Customizer Specific Logic
+        const inputName = document.getElementById('inputName');
+        const inputNumber = document.getElementById('inputNumber');
+        const previewName = document.getElementById('previewName');
+        const previewNumber = document.getElementById('previewNumber');
+        const jerseyMockup = document.getElementById('jerseyMockup');
+        let selectedColor = '#1e3a8a'; // Default blue
+
+        inputName.addEventListener('input', (e) => {
+            previewName.innerText = e.target.value.toUpperCase() || 'YOUR NAME';
+        });
+
+        inputNumber.addEventListener('input', (e) => {
+            previewNumber.innerText = e.target.value || '10';
+        });
+
+        function changeColor(color) {
+            selectedColor = color;
+            // Simple robust color change for the icon container
+            jerseyMockup.style.color = color;
+
+            // Adjust text color based on background (simple heuristic)
+            if (color === '#f8fafc') { // White jersey
+                previewName.style.color = '#000';
+                previewNumber.style.color = '#000';
+                jerseyMockup.style.backgroundColor = '#e2e8f0';
+            } else {
+                previewName.style.color = '#fff';
+                previewNumber.style.color = '#fff';
+                jerseyMockup.style.backgroundColor = '#334155';
+            }
+
+            // Highlight active swatch
+            document.querySelectorAll('.color-swatch').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Add to Bag Logic
+        document.querySelector('.btn-primary').addEventListener('click', () => {
+            const customization = {
+                name: inputName.value.toUpperCase() || 'CUSTOM',
+                price: 1199,
+                details: {
+                    number: inputNumber.value || 10,
+                    color: selectedColor,
+                    size: document.querySelector('select').value
+                }
+            };
+
+            // Custom ID 999 for generic custom jersey, passing customization object
+            addToCart(999, customization);
+        });
+    </script>
+</body>
+
+</html>

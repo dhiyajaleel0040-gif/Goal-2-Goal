@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Goal 2 Goal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .cart-container {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            min-height: 80vh;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .cart-items {
+            background: var(--color-secondary-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            background: #334155;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: #fff;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .item-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .item-meta {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 15px;
+            font-size: 1.1rem;
+        }
+
+        .cart-summary {
+            background: var(--color-secondary-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--color-gray);
+        }
+
+        .summary-total {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px;
+            color: var(--color-gray);
+        }
+
+        @media (max-width: 768px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">GOAL<span class="highlight">2</span>GOAL</a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop Jerseys</a></li>
+                    <li><a href="customize.html">Customize</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="icon-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="cart-container container">
+        <h1 style="margin-bottom: 30px;">Shopping Cart</h1>
+
+        <div class="cart-layout">
+
+            <!-- Cart Items List -->
+            <div class="cart-items" id="cartItemsContainer">
+                <!-- Rendered vis JS -->
+                <div class="empty-cart">
+                    <i class="fa-solid fa-basket-shopping" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                    <p>Your cart is empty.</p>
+                    <a href="shop.html" class="btn btn-outline" style="margin-top: 20px;">Browse Shop</a>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="cart-summary">
+                <h3 style="margin-bottom: 25px;">Order Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">₹0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="cartTotal">₹0</span>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;"
+                    onclick="alert('Checkout integration coming soon!')">Proceed to Checkout</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        // Cart Page Specific Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCartPage();
+        });
+
+        function renderCartPage() {
+            const container = document.getElementById('cartItemsContainer');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fa-solid fa-basket-shopping" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                        <p>Your cart is empty.</p>
+                        <a href="shop.html" class="btn btn-outline" style="margin-top: 20px;">Browse Shop</a>
+                    </div>
+                `;
+                updateSummary(0);
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = cart.map((item, index) => {
+                total += item.price;
+                return `
+                    <div class="cart-item">
+                        <div class="item-image">
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                        <div class="item-details">
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-meta">${item.details ? `Size: ${item.details.size}, No: ${item.details.number}` : 'Standard Kit'}</div>
+                        </div>
+                        <div class="item-price">₹${item.price}</div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            }).join('');
+
+            updateSummary(total);
+        }
+
+        function updateSummary(total) {
+            document.getElementById('cartSubtotal').innerText = `₹${total}`;
+            document.getElementById('cartTotal').innerText = `₹${total}`;
+        }
+
+        // Attach to window so onclick works
+        window.removeFromCart = function (index) {
+            cart.splice(index, 1);
+            saveCart();
+            renderCartPage();
+            showNotification('Item removed.');
+        };
+    </script>
+</body>
+
+</html>
