@@ -1,43 +1,43 @@
-// Goal 2 Goal - Core Application Logic
+// Goal 2 Goal -> ChocoFerris Core Logic
 
 // --- Mock Database ---
 const products = [
     {
         id: 1,
-        name: "Manchester City Home 24/25",
-        price: 899,
-        image: "assets/images/mancity_home.png", // Placeholder path
-        category: "Premier League",
+        name: "Belgian Dark Truffles",
+        price: 750,
+        image: "assets/images/dark_truffles.png",
+        category: "Dark Chocolate",
         isTrending: true
     },
     {
         id: 2,
-        name: "Real Madrid Home 24/25",
-        price: 999,
-        image: "assets/images/real_home.png",
-        category: "La Liga",
+        name: "Swiss Milk Caramel",
+        price: 650,
+        image: "assets/images/milk_caramel.png",
+        category: "Milk Chocolate",
         isTrending: true
     },
     {
         id: 3,
-        name: "Arsenal Away 24/25",
-        price: 899,
-        image: "assets/images/arsenal_away.png",
-        category: "Premier League",
+        name: "White Raspberry Delight",
+        price: 800,
+        image: "assets/images/white_raspberry.png",
+        category: "White Chocolate",
         isTrending: true
     },
     {
         id: 4,
-        name: "Brazil Home 2024",
-        price: 1199,
-        image: "assets/images/brazil_home.png",
-        category: "International",
+        name: "Luxury Gift Hamper",
+        price: 2500,
+        image: "assets/images/hamper_lux.png",
+        category: "Gifting",
         isTrending: false
     }
 ];
 
 // --- State Management ---
-let cart = JSON.parse(localStorage.getItem('g2g_cart')) || [];
+let cart = JSON.parse(localStorage.getItem('choco_cart')) || [];
 
 document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
@@ -63,11 +63,11 @@ function initHeaderScroll() {
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.style.background = 'rgba(15, 23, 42, 0.95)';
+            header.style.background = 'rgba(62, 39, 35, 0.95)';
             header.style.boxShadow = 'var(--shadow-main)';
         } else {
-            header.style.background = 'rgba(15, 23, 42, 0.85)';
-            header.style.boxShadow = 'none';
+            header.style.background = 'rgba(62, 39, 35, 0.85)';
+            header.style.boxShadow = 'var(--shadow-main)';
         }
     });
 }
@@ -75,7 +75,6 @@ function initHeaderScroll() {
 // --- Feature: Mobile Menu ---
 function initMobileMenu() {
     const mobileBtn = document.querySelector('.mobile-menu-btn');
-    // Simple alert for now, can expand to a real drawer later
     if (mobileBtn) {
         mobileBtn.addEventListener('click', () => {
             alert('Mobile menu coming soon!');
@@ -86,25 +85,25 @@ function initMobileMenu() {
 // --- Feature: Cart Logic ---
 function addToCart(productId, customization = null) {
     const product = products.find(p => p.id === productId);
-    if (!product && !customization) return; // Custom items might not be in product DB directly
+    if (!product && !customization) return;
 
     const cartItem = {
-        id: Date.now(), // Unique ID for cart entry
+        id: Date.now(),
         productId: productId,
         name: customization ? `Custom: ${customization.name}` : product.name,
         price: customization ? customization.price : product.price,
-        image: product ? product.image : 'assets/images/custom_jersey.png',
+        image: product ? product.image : 'assets/images/custom_choco.png',
         details: customization || null,
         quantity: 1
     };
 
     cart.push(cartItem);
     saveCart();
-    showNotification('Item added to cart!');
+    showNotification('Sweet treat added to cart!');
 }
 
 function saveCart() {
-    localStorage.setItem('g2g_cart', JSON.stringify(cart));
+    localStorage.setItem('choco_cart', JSON.stringify(cart));
     updateCartCount();
 }
 
@@ -112,19 +111,16 @@ function updateCartCount() {
     const countElements = document.querySelectorAll('.cart-count');
     countElements.forEach(el => {
         el.innerText = cart.length;
-        // Animation pop
         el.classList.add('pop');
         setTimeout(() => el.classList.remove('pop'), 200);
     });
 }
 
 function showNotification(message) {
-    // Simple toast notification
     const toast = document.createElement('div');
     toast.className = 'toast-notification';
     toast.innerText = message;
 
-    // Styles for toast (injected here for simplicity or add to CSS)
     Object.assign(toast.style, {
         position: 'fixed',
         bottom: '20px',
@@ -135,7 +131,7 @@ function showNotification(message) {
         borderRadius: '8px',
         fontWeight: '600',
         zIndex: '9999',
-        boxShadow: '0 5px 15px rgba(0,0,0,0.3)',
+        boxShadow: '0 5px 15px rgba(62, 39, 35, 0.3)',
         animation: 'slideIn 0.3s ease-out'
     });
 
@@ -157,10 +153,11 @@ function renderTrendingProducts() {
     container.innerHTML = trending.map(product => `
         <div class="product-card">
             <div class="product-image">
-                <i class="fa-solid fa-shirt" style="font-size: 4rem;"></i>
+                <!-- Fallback icon if image fails or for now -->
+                <i class="fa-solid fa-cookie-bite" style="font-size: 4rem; color: #5D4037;"></i>
                 <div class="product-overlay">
                     <button class="btn btn-primary add-to-cart-btn" data-id="${product.id}" style="padding: 8px 15px; font-size: 0.8rem;">Add to Cart</button>
-                    <a href="customize.html" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.8rem;">Customize</a>
+                    <a href="customize.html" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.8rem;">Details</a>
                 </div>
             </div>
             <div class="product-info">

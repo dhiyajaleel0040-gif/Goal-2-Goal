@@ -124,12 +124,12 @@
     <!-- Header -->
     <header class="site-header">
         <div class="container header-container">
-            <a href="index.html" class="logo">GOAL<span class="highlight">2</span>GOAL</a>
+            <a href="index.html" class="logo">Choco<span class="highlight">Ferris</span></a>
             <nav class="main-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop Jerseys</a></li>
-                    <li><a href="customize.html">Customize</a></li>
+                    <li><a href="shop.html">Shop Chocolates</a></li>
+                    <li><a href="customize.html">Personalized Gifting</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -143,7 +143,7 @@
     </header>
 
     <main class="cart-container container">
-        <h1 style="margin-bottom: 30px;">Shopping Cart</h1>
+        <h1 style="margin-bottom: 30px;">Your Sweet Cart</h1>
 
         <div class="cart-layout">
 
@@ -206,11 +206,11 @@
                 return `
                     <div class="cart-item">
                         <div class="item-image">
-                            <i class="fa-solid fa-shirt"></i>
+                            <i class="fa-solid fa-gift"></i>
                         </div>
                         <div class="item-details">
                             <div class="item-name">${item.name}</div>
-                            <div class="item-meta">${item.details ? `Size: ${item.details.size}, No: ${item.details.number}` : 'Standard Kit'}</div>
+                            <div class="item-meta">${item.details ? `Size: ${item.details.size}, Note: ${item.details.message || ''}` : 'Premium Chocolate'}</div>
                         </div>
                         <div class="item-price">₹${item.price}</div>
                         <button class="remove-btn" onclick="removeFromCart(${index})"><i class="fa-solid fa-trash"></i></button>

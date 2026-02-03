@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ChocoFerris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">Choco<span class="highlight">Ferris</span></a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop Chocolates</a></li>
+                    <li><a href="customize.html">Personalized Gifting</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="icon-btn cart-btn"><i class="fa-solid fa-cart-shopping"></i><span
+                        class="cart-count">0</span></a>
+                <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 150px; padding-bottom: 80px;">
+        <div
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; background: var(--color-secondary-light); padding: 40px; border-radius: 12px;">
+            <div>
+                <h1 style="margin-bottom: 20px;">Get in Touch</h1>
+                <p style="color: var(--color-gray); margin-bottom: 30px;">
+                    Have a question about your order or want to discuss a bulk corporate gift? We'd love to hear from
+                    you.
+                </p>
+
+                <div style="margin-bottom: 20px;">
+                    <i class="fa-solid fa-envelope" style="color: #D4AF37; width: 20px;"></i>
+                    <span style="margin-left: 10px;">hello@chocoferris.com</span>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <i class="fa-solid fa-phone" style="color: #D4AF37; width: 20px;"></i>
+                    <span style="margin-left: 10px;">+91 98765 43210</span>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <i class="fa-solid fa-location-dot" style="color: #D4AF37; width: 20px;"></i>
+                    <span style="margin-left: 10px;">123 Chocolate Lane, Sweet City, India</span>
+                </div>
+            </div>
+
+            <form style="display: flex; flex-direction: column; gap: 20px;">
+                <input type="text" placeholder="Your Name"
+                    style="padding: 15px; border-radius: 8px; border: none; background: rgba(0,0,0,0.2); color: #fff;">
+                <input type="email" placeholder="Your Email"
+                    style="padding: 15px; border-radius: 8px; border: none; background: rgba(0,0,0,0.2); color: #fff;">
+                <textarea placeholder="Your Message" rows="4"
+                    style="padding: 15px; border-radius: 8px; border: none; background: rgba(0,0,0,0.2); color: #fff;"></textarea>
+                <button class="btn btn-primary" onclick="event.preventDefault(); alert('Message sent!');">Send
+                    Message</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Choco<span class="highlight">Ferris</span></h3>
+                <p>Bringing sweetness to your life, one bite at a time.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ChocoFerris. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

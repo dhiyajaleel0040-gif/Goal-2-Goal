@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customize Your Jersey | Goal 2 Goal</title>
+    <title>Personalized Gifting | ChocoFerris</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -31,54 +31,50 @@
             min-height: 500px;
         }
 
-        .jersey-mockup {
-            width: 400px;
-            height: 500px;
-            background-color: #334155;
-            /* Fallback for image */
+        .box-mockup {
+            width: 350px;
+            height: 350px;
+            background-color: #D4AF37;
+            /* Fallback gold */
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 5px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Overlay Text */
-        .jersey-text-overlay {
+        .box-text-overlay {
             position: absolute;
-            top: 30%;
+            top: 50%;
             left: 50%;
-            transform: translate(-50%, 0);
+            transform: translate(-50%, -50%);
             text-align: center;
-            width: 100%;
+            width: 80%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .preview-name {
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            font-weight: 800;
-            color: #fff;
+        .preview-message {
+            font-family: 'Times New Roman', serif;
+            /* Elegant font for card */
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #3E2723;
             display: block;
-            margin-bottom: 0px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .preview-number {
-            font-size: 8rem;
-            font-weight: 900;
-            line-height: 1;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         /* Controls Area */
         .controls-area {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(62, 39, 35, 0.8);
             padding: 30px;
             border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .control-group {
@@ -88,7 +84,7 @@
         .control-group label {
             display: block;
             margin-bottom: 10px;
-            color: var(--color-gray);
+            color: var(--color-light);
             font-weight: 500;
         }
 
@@ -127,20 +123,20 @@
             transform: scale(1.1);
         }
 
-        .swatch-blue {
-            background: #1e3a8a;
+        .swatch-gold {
+            background: #D4AF37;
         }
 
         .swatch-red {
             background: #991b1b;
         }
 
-        .swatch-white {
-            background: #f8fafc;
+        .swatch-cream {
+            background: #F5F5DC;
         }
 
         .swatch-black {
-            background: #000;
+            background: #1A120B;
         }
 
         .price-summary {
@@ -171,13 +167,13 @@
     <!-- Header -->
     <header class="site-header">
         <div class="container header-container">
-            <a href="index.html" class="logo">GOAL<span class="highlight">2</span>GOAL</a>
+            <a href="index.html" class="logo">Choco<span class="highlight">Ferris</span></a>
             <nav class="main-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop Jerseys</a></li>
-                    <li><a href="customize.html" class="active">Customize</a></li>
-                    <li><a href="#offers">Offers</a></li>
+                    <li><a href="shop.html">Shop Chocolates</a></li>
+                    <li><a href="customize.html" class="active">Personalized Gifting</a></li>
+                    <li><a href="#offers">Festive Offers</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -195,60 +191,54 @@
 
     <main class="customizer-container container">
 
-        <!-- Jersey Preview -->
+        <!-- Preview -->
         <div class="preview-area">
-            <div class="jersey-mockup" id="jerseyMockup">
-                <!-- Icon as placeholder for jersey image -->
-                <i class="fa-solid fa-shirt" style="font-size: 12rem;"></i>
+            <div class="box-mockup" id="boxMockup">
+                <!-- Icon as placeholder for box decoration -->
+                <i class="fa-solid fa-gift" style="font-size: 8rem;"></i>
 
-                <div class="jersey-text-overlay">
-                    <span class="preview-name" id="previewName">YOUR NAME</span>
-                    <span class="preview-number" id="previewNumber">10</span>
+                <div class="box-text-overlay">
+                    <span class="preview-message" id="previewMessage">Happy Birthday!</span>
                 </div>
             </div>
         </div>
 
         <!-- Controls -->
         <aside class="controls-area">
-            <h2 style="margin-bottom: 20px;">Design Your Kit</h2>
+            <h2 style="margin-bottom: 20px; color: var(--color-primary);">Build Your Box</h2>
 
             <div class="control-group">
-                <label>Select Your Team / Base Color</label>
+                <label>Select Box Color</label>
                 <div class="color-options">
-                    <div class="color-swatch swatch-blue active" onclick="changeColor('#1e3a8a')"></div>
+                    <div class="color-swatch swatch-gold active" onclick="changeColor('#D4AF37')"></div>
                     <div class="color-swatch swatch-red" onclick="changeColor('#991b1b')"></div>
-                    <div class="color-swatch swatch-white" onclick="changeColor('#f8fafc')"></div>
-                    <div class="color-swatch swatch-black" onclick="changeColor('#000')"></div>
+                    <div class="color-swatch swatch-cream" onclick="changeColor('#F5F5DC')"></div>
+                    <div class="color-swatch swatch-black" onclick="changeColor('#1A120B')"></div>
                 </div>
             </div>
 
             <div class="control-group">
-                <label>Name on Back</label>
-                <input type="text" class="form-input" id="inputName" placeholder="Enter Name (e.g. RONALDO)"
-                    maxlength="12">
+                <label>Message Card</label>
+                <input type="text" class="form-input" id="inputMessage" placeholder="Enter Message (e.g. Love You!)"
+                    maxlength="50">
             </div>
 
             <div class="control-group">
-                <label>Jersey Number</label>
-                <input type="number" class="form-input" id="inputNumber" placeholder="10" max="99">
-            </div>
-
-            <div class="control-group">
-                <label>Size</label>
+                <label>Box Size</label>
                 <select class="form-input">
-                    <option>Small (S)</option>
-                    <option selected>Medium (M)</option>
-                    <option>Large (L)</option>
-                    <option>Extra Large (XL)</option>
+                    <option value="Small">Small (6 pcs)</option>
+                    <option value="Medium" selected>Medium (12 pcs)</option>
+                    <option value="Large">Large (24 pcs)</option>
+                    <option value="Grand">Grand (48 pcs)</option>
                 </select>
             </div>
 
             <div class="price-summary">
                 <div>
                     <span style="display: block; color: var(--color-gray); font-size: 0.9rem;">Total Cost</span>
-                    <span class="total-price">₹1,199</span>
+                    <span class="total-price">₹1,499</span>
                 </div>
-                <button class="btn btn-primary">Add to Bag</button>
+                <button class="btn btn-primary" id="addToBagBtn">Add to Cart</button>
             </div>
 
         </aside>
@@ -258,47 +248,36 @@
     <footer class="site-footer">
         <div class="container footer-content">
             <div class="footer-brand">
-                <h3>GOAL<span class="highlight">2</span>GOAL</h3>
-                <p>Your trusted partner for premium sports apparel.</p>
+                <h3>Choco<span class="highlight">Ferris</span></h3>
+                <p>Bringing sweetness to your life, one bite at a time.</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Goal 2 Goal. All rights reserved.</p>
+            <p>&copy; 2026 ChocoFerris. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="assets/js/app.js"></script>
     <script>
         // Customizer Specific Logic
-        const inputName = document.getElementById('inputName');
-        const inputNumber = document.getElementById('inputNumber');
-        const previewName = document.getElementById('previewName');
-        const previewNumber = document.getElementById('previewNumber');
-        const jerseyMockup = document.getElementById('jerseyMockup');
-        let selectedColor = '#1e3a8a'; // Default blue
+        const inputMessage = document.getElementById('inputMessage');
+        const previewMessage = document.getElementById('previewMessage');
+        const boxMockup = document.getElementById('boxMockup');
+        let selectedColor = '#D4AF37'; // Default gold
 
-        inputName.addEventListener('input', (e) => {
-            previewName.innerText = e.target.value.toUpperCase() || 'YOUR NAME';
-        });
-
-        inputNumber.addEventListener('input', (e) => {
-            previewNumber.innerText = e.target.value || '10';
+        inputMessage.addEventListener('input', (e) => {
+            previewMessage.innerText = e.target.value || 'Happy Birthday!';
         });
 
         function changeColor(color) {
             selectedColor = color;
-            // Simple robust color change for the icon container
-            jerseyMockup.style.color = color;
+            boxMockup.style.backgroundColor = color;
 
-            // Adjust text color based on background (simple heuristic)
-            if (color === '#f8fafc') { // White jersey
-                previewName.style.color = '#000';
-                previewNumber.style.color = '#000';
-                jerseyMockup.style.backgroundColor = '#e2e8f0';
+            // Adjust icon color for visibility
+            if (color === '#F5F5DC') { // Cream
+                boxMockup.style.color = 'rgba(0,0,0,0.2)';
             } else {
-                previewName.style.color = '#fff';
-                previewNumber.style.color = '#fff';
-                jerseyMockup.style.backgroundColor = '#334155';
+                boxMockup.style.color = 'rgba(255,255,255,0.2)';
             }
 
             // Highlight active swatch
@@ -307,19 +286,35 @@
         }
 
         // Add to Bag Logic
-        document.querySelector('.btn-primary').addEventListener('click', () => {
+        document.getElementById('addToBagBtn').addEventListener('click', () => {
+            const size = document.querySelector('select').value;
+            let price = 1499;
+            if (size === 'Small') price = 899;
+            if (size === 'Large') price = 2499;
+            if (size === 'Grand') price = 4599;
+
             const customization = {
-                name: inputName.value.toUpperCase() || 'CUSTOM',
-                price: 1199,
+                name: 'Custom Gift Box',
+                price: price,
                 details: {
-                    number: inputNumber.value || 10,
+                    message: inputMessage.value || 'No Message',
                     color: selectedColor,
-                    size: document.querySelector('select').value
+                    size: size
                 }
             };
 
-            // Custom ID 999 for generic custom jersey, passing customization object
+            // Custom ID 999 for custom box
             addToCart(999, customization);
+        });
+
+        // Dynamic price update based on size
+        document.querySelector('select').addEventListener('change', (e) => {
+            const size = e.target.value;
+            const priceEl = document.querySelector('.total-price');
+            if (size === 'Small') priceEl.innerText = '₹899';
+            if (size === 'Medium') priceEl.innerText = '₹1,499';
+            if (size === 'Large') priceEl.innerText = '₹2,499';
+            if (size === 'Grand') priceEl.innerText = '₹4,599';
         });
     </script>
 </body>
